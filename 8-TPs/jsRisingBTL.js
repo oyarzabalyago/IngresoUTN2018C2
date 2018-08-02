@@ -23,112 +23,125 @@ function ComenzarIngreso ()
 	
 	// pido primer dato (edad)
 	dato = parseInt(prompt ("Ingrese su edad"));
-	
-	//valido la edad
-	if(dato>=18 && dato<=90)
+
+    //valido la edad
+    while (dato<18 || dato>90 || isNaN(dato)) 
+    {
+        dato = parseInt(prompt ("Error. Ingrese su edad"));
+    }
+    // seteo el dato validado a la variable edad
+	edad=dato;
+		
+	// muestro la edad validada en su input
+	document.getElementById("Edad").value = edad;
+		
+	// pido nuevo dato (sexo)
+	dato =(prompt ("Ingrese su sexo, “M” para masculino y “F” para femenino")).toUpperCase();
+		
+	//Sexo, "M" para masculino y "F" para femenino	
+    while (dato!="M" && dato!="F")
 	{
-		// seteo el dato validado a la variable edad
-		edad=dato;
-		
-		// muestro la edad validada en su input
-		document.getElementById("Edad").value = edad;
-		
-		// pido nuevo dato (sexo)
-		dato = prompt ("Ingrese su sexo, “M” para masculino y “F” para femenino").toUpperCase();
-		
-		//Sexo, “M” para masculino y “F” para femenino	
-		if(dato=="M" || dato=="F")
-		{
-			if(dato=="M")
-			{				
-				// seteo el dato validado a la variable sexo
-				sexo="Masculino";
-			}
-			else
-			{				
-				// seteo el dato validado a la variable sexo
-				sexo="Femenino";
-			}
-			
-			// muestro la edad validada en su input
-			document.getElementById("Sexo").value = sexo;
-			
-			// pido nuevo dato (estado civil)
-			dato = parseInt(prompt ("Ingrese su estado civil 1-para soltero, 2-para casados, 3-para divorciados y 4-para viudos"));
+        // pido nuevo dato (sexo)
+	    dato = (prompt ("Ingrese su sexo, “M” para masculino y “F” para femenino")).toUpperCase();
+    }
 
-			//Estado civil, 1-para soltero, 2-para casados, 3-para divorciados y 4-para viudos				
-			if(dato>0 && dato<5)
-			{
-				// seteo el dato validado a la variable estadocivil dependiendo lo ingresado
-				switch(dato)
-				{
-					case 1:	estadocivil="Soltero/a";
-							break;
-					case 2: estadocivil="Casado/a";
-							break;
-					case 3: estadocivil="Divorciado/a";
-							break;
-					case 4: estadocivil="Viudo/a";
-							break;
-				}
-				// muestro la edad validada en su input
-				document.getElementById("EstadoCivil").value = estadocivil;
-				
-				// pido nuevo dato (sueldo)
-				dato = parseInt(prompt ("Ingrese su sueldo"));
-				
-				//Sueldo bruto, no menor a 8000.
-				if(dato >= 8000)
-				{
-					// seteo el dato validado a la variable sueldo
-					sueldo=dato;
-					
-					// muestro la edad validada en su input
-					document.getElementById("Sueldo").value = sueldo;
-					
-					// pido nuevo dato (legajo)
-					dato = parseInt(prompt ("Ingrese su legajo de 4 digitos"));
-					
-					//Número de legajo, numérico de 4 cifras, sin ceros a la izquierda.
-					if(dato>1000 || dato<=9999)
-					{
-						// seteo el dato validado a la variable legajo
-						legajo=dato;
-						
-						// muestro la edad validada en su input
-						document.getElementById("Legajo").value = legajo;
-						
-						// pido nuevo dato (nacionalidad)
-						dato = prompt ("Ingrese su nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para nacionalizados").toUpperCase();
-						
-						// Nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para nacionalizados.
-						if(dato=="A")
-						{
-							// seteo el dato validado a la variable nacionalidad
-							nacionalidad="Argentino";
-						}
-						else if(dato=="E")
-						{
-							// seteo el dato validado a la variable nacionalidad
-							nacionalidad="Extranjero";
-						}
-						else
-						{
-							// seteo el dato validado a la variable nacionalidad
-							nacionalidad="Nacionalizado";
-						}
-						
-						// muestro la edad validada en su input
-						document.getElementById("Nacionalidad").value = nacionalidad;
-
-					}
-
-				}
-
-			}
-
-		}
-		
+	if(dato=="M")
+	{				
+	    // seteo el dato validado a la variable sexo
+		sexo="Masculino";
 	}
+	else
+	{				
+		// seteo el dato validado a la variable sexo
+		sexo="Femenino";
+	}
+			
+	// muestro la edad validada en su input
+	document.getElementById("Sexo").value = sexo;
+			
+	// pido nuevo dato (estado civil)
+	dato = parseInt(prompt ("Ingrese su estado civil 1-para soltero, 2-para casados, 3-para divorciados y 4-para viudos"));
+
+	//Estado civil, 1-para soltero, 2-para casados, 3-para divorciados y 4-para viudos				
+	while(dato<1 || dato>4 || isNaN(dato))
+	{
+        dato = parseInt(prompt ("Error. Ingrese su estado civil 1-para soltero, 2-para casados, 3-para divorciados y 4-para viudos"));
+    }
+	
+    // seteo el dato validado a la variable estadocivil dependiendo lo ingresado
+	switch(dato)
+	{
+	    case 1:	estadocivil="Soltero/a";
+				break;
+		case 2: estadocivil="Casado/a";
+				break;
+		case 3: estadocivil="Divorciado/a";
+				break;
+		case 4: estadocivil="Viudo/a";
+				break;
+	}
+    // muestro el estadocivil validada en su input
+	document.getElementById("EstadoCivil").value = estadocivil;
+				
+	// pido nuevo dato (sueldo)
+	dato = parseInt(prompt ("Ingrese su sueldo"));
+		
+	//Sueldo bruto, no menor a 8000.
+	while(dato < 8000  || isNaN(dato))
+	{
+        // pido nuevo dato (sueldo)
+		dato = parseInt(prompt ("Ingrese su sueldo"));
+    }
+	
+    // seteo el dato validado a la variable sueldo
+	sueldo=dato;
+					
+	// muestro la edad validada en su input
+	document.getElementById("Sueldo").value = sueldo;
+					
+	// pido nuevo dato (legajo)
+	dato = parseInt(prompt ("Ingrese su legajo de 4 digitos"));
+				
+	//Número de legajo, numérico de 4 cifras, sin ceros a la izquierda.
+	while(dato<1000 || dato>9999 || isNaN(dato))
+	{
+        // pido nuevo dato (legajo)
+	    dato = parseInt(prompt ("Ingrese su legajo de 4 digitos"));
+    }
+	
+    // seteo el dato validado a la variable legajo
+	legajo=dato;
+						
+	// muestro el legajo validada en su input
+	document.getElementById("Legajo").value = legajo;
+						
+	// pido nuevo dato (nacionalidad)
+	dato = prompt ("Ingrese su nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para nacionalizados").toUpperCase();
+						
+	while(dato!="A" && dato!="E" && dato!="N")
+    {
+        // pido nuevo dato (nacionalidad)
+	    dato = prompt ("Ingrese su nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para nacionalizados").toUpperCase();
+	}
+        
+    // Nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para nacionalizados.
+    if(dato=="A")
+    {
+        // seteo el dato validado a la variable nacionalidad
+        nacionalidad="Argentino";
+    }
+    else if(dato=="E")
+    {
+        // seteo el dato validado a la variable nacionalidad
+        nacionalidad="Extranjero";
+    }
+    else
+    {
+        // seteo el dato validado a la variable nacionalidad
+        nacionalidad="Nacionalizado";
+    }
+    
+    // muestro la nacionalidad validada en su input
+    document.getElementById("Nacionalidad").value = nacionalidad;
 
 }//fin de la ejecucucion
